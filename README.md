@@ -2,12 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Biggest takeaways from this application
 
-1. Start with Create react app.
-2. Make the static components.
-3. Make the connection to firebase after making a new app on firebase.
-4. Create states to contain the time and title.
-5. on TimesList, map the snapshot docs with the id and data so that you can output the data from firebase onto the page directly.
-6. on AddTimeForm, grab the submitted values and POST to firebase, reset state once submitted.
+Look at the different branches to view different projects.
 
 ## Available Scripts
 
