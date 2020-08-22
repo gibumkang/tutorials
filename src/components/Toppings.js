@@ -1,5 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+    hidden: {
+        x: "100vw",
+        opacity: 0,
+    },
+    visible: {
+        x: 0,
+        opacity: 1,
+        transition: {
+            type: "spring",
+            delay: 0.5,
+        },
+    },
+};
 
 const Toppings = ({ addTopping, pizza }) => {
     let toppings = [
@@ -12,7 +28,12 @@ const Toppings = ({ addTopping, pizza }) => {
     ];
 
     return (
-        <div className="toppings container">
+        <motion.div
+            className="toppings container"
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+        >
             <h3>Step 2: Choose Toppings</h3>
             <ul>
                 {toppings.map((topping) => {
@@ -20,9 +41,18 @@ const Toppings = ({ addTopping, pizza }) => {
                         ? "active"
                         : "";
                     return (
-                        <li key={topping} onClick={() => addTopping(topping)}>
+                        <motion.li
+                            key={topping}
+                            whileHover={{
+                                scale: 1.3,
+                                color: "#f8e112",
+                                originX: 0,
+                            }}
+                            transition={{ type: "spring", stiffness: 300 }}
+                            onClick={() => addTopping(topping)}
+                        >
                             <span className={spanClass}>{topping}</span>
-                        </li>
+                        </motion.li>
                     );
                 })}
             </ul>
@@ -30,7 +60,7 @@ const Toppings = ({ addTopping, pizza }) => {
             <Link to="/order">
                 <button>Order</button>
             </Link>
-        </div>
+        </motion.div>
     );
 };
 
