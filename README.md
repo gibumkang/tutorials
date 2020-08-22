@@ -116,7 +116,7 @@ A transition property that adds repeating images declaratively as opposed to imp
 
 ### AnimatePresence and exit attribute for exit animations
 
-Animating exit transitions actually require an extra step. Load AnimatePresnce from 'framer-motion' and wrap your component with <AnimatePresence> tags. Make sure the component within it has an exit attribute. Framer will know to look for the exit attribute when the component exits the DOM, whether from the DOM directly or from a rerender:
+Animating exit transitions actually require an extra step. Load AnimatePresnce from 'framer-motion' and wrap your component with \<AnimatePresence> tags. Make sure the component within it has an exit attribute. Framer will know to look for the exit attribute when the component exits the DOM, whether from the DOM directly or from a rerender:
 
 ```
     import {motion, AnimatePresence} from 'framer-motion';
@@ -131,7 +131,7 @@ Animating exit transitions actually require an extra step. Load AnimatePresnce f
     </AnimatePresence>
 ```
 
-After 1 sec from the setTimeout, the h1 will animate out of the screen vertically because of the exit attribute + AnimatePresence tag. Adding animation to page transitions can be done by wrapping the <Switch> tags with <AnimatePresence>. Make sure the <Switch> tag contains the following attributes (location and key) in order for framer to detect the changes. Finally, the animating components must also have an exit attribute:
+After 1 sec from the setTimeout, the h1 will animate out of the screen vertically because of the exit attribute + AnimatePresence tag. Adding animation to page transitions can be done by wrapping the \<Switch> tags with \<AnimatePresence>. Make sure the \<Switch> tag contains the following attributes (location and key) in order for framer to detect the changes. Finally, the animating components must also have an exit attribute:
 
 ```
     const HomeVariants = {
