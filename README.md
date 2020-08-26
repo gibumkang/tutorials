@@ -17,11 +17,14 @@ const containerVariants = {
         opacity: 1,
         transition: {
             type: "spring",
-            delay: 0.5,
+            mass: 0.4,
+            damping: 8,
             when: "beforeChildren",
+            staggerChildren: 0.4,
         },
     },
 };
+
 const childVariants = {
     hidden: {
         opacity: 0,
@@ -108,7 +111,7 @@ A transition property that adds repeating images declaratively as opposed to imp
         start: {
             scale: 1.5 //No need to specify 1 since that is the default
             transition: {
-                yoyo: 2 //for infnitie, use Infinity
+                yoyo: 2 //for infinite, use Infinity
             }
         }
     }
@@ -116,7 +119,7 @@ A transition property that adds repeating images declaratively as opposed to imp
 
 ### AnimatePresence and exit attribute for exit animations
 
-Animating exit transitions actually require an extra step. Load AnimatePresnce from 'framer-motion' and wrap your component with \<AnimatePresence> tags. Make sure the component within it has an exit attribute. Framer will know to look for the exit attribute when the component exits the DOM, whether from the DOM directly or from a rerender:
+Animating exit transitions actually require an extra step. Load AnimatePresence from 'framer-motion' and wrap your component with \<AnimatePresence> tags. Make sure the component within it has an exit attribute. Framer will know to look for the exit attribute when the component exits the DOM, whether from the DOM directly or from a rerender:
 
 ```
     import {motion, AnimatePresence} from 'framer-motion';
@@ -145,7 +148,7 @@ After 1 sec from the setTimeout, the h1 will animate out of the screen verticall
             x: -100
         }
     }
-    <AnimatePresence>
+    <AnimatePresence exitbeforeEnter>
         <Switch location={location} key={location.key}>
             <Route path='/home'>
                 <Home
@@ -159,3 +162,5 @@ After 1 sec from the setTimeout, the h1 will animate out of the screen verticall
         </Switch>
     </AnimatePresence>
 ```
+
+In addition, make sure to append **exitBeforeEnter** on the \<AnimatePresence> tag so that each component animation may complete before the next one is loaded.
