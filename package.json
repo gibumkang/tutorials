@@ -1,0 +1,26 @@
+{
+  "name": "tutorials",
+  "version": "1.0.0",
+  "description": "Switch branches to toggle between the various tutorials I am currently tackling.",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "framer-motion": "^1.11.1",
+    "http-post": "^0.1.1",
+    "https-post": "^0.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gibumkang/kouple.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gibumkang/kouple/issues"
+  },
+  "homepage": "https://github.com/gibumkang/kouple#readme"
+}
