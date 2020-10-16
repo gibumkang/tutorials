@@ -35,7 +35,7 @@ const childVariants = {
 };
 ```
 
-This allows the 'You ordered a pizza with:' line to only animate once the 'Thank you for your order :)' animation has completely finished. That is because childVariants is a child of containerVariants:
+The first child will not inherit any staggering. The second child will inherit a stagger delay of 0.4, the third by 0.8, and so on. This causes the 'You ordered a pizza with:' line to have no stagger, but the following list of toppings to have a stagger delay of 0.4. Remember, the first child does not inherit any type of delay.
 
 ```
     <motion.div
