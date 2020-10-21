@@ -1,11 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import Loader from './Loader';
 
 const buttonVariants = {
     hover: {
         scale: [1, 1.1, 1, 1.1, 1, 1.1, 1],
-        textShadow: "0px 0px 8px rgb(255,255,255)",
+        textShadow: '0px 0px 8px rgb(255,255,255)',
     },
 };
 
@@ -21,26 +22,21 @@ const containerVariants = {
         },
     },
     exit: {
-        x: "-100vh",
-        transition: { ease: "easeInOut" },
+        x: '-100vh',
+        transition: { ease: 'easeInOut' },
     },
 };
 
 const Home = () => {
     return (
-        <motion.div
-            className="home container"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-        >
+        <motion.div className="home container" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
             <motion.h2>Welcome to Pizza Joint</motion.h2>
             <Link to="/base">
                 <motion.button variants={buttonVariants} whileHover="hover">
                     Create Your Pizza
                 </motion.button>
             </Link>
+            <Loader />
         </motion.div>
     );
 };

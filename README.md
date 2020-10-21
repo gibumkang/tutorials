@@ -134,7 +134,7 @@ Animating exit transitions actually require an extra step. Load AnimatePresence 
     </AnimatePresence>
 ```
 
-After 1 sec from the setTimeout, the h1 will animate out of the screen vertically because of the exit attribute + AnimatePresence tag. Adding animation to page transitions can be done by wrapping the \<Switch> tags with \<AnimatePresence>. Make sure the \<Switch> tag contains the following attributes (location and key) in order for framer to detect the changes. Finally, the animating components must also have an exit attribute:
+After 1 sec from the setTimeout, the h1 will animate out of the screen vertically because of the exit attribute + AnimatePresence tag. Adding animation to page transitions can be done by wrapping the \<Switch> tags with \<AnimatePresence>. Make sure the \<Switch> tag contains the following attributes (location and key) in order for framer to detect the changes. Obviously, \<Switch> is an element from react-router. Finally, the animating components must also have an exit attribute:
 
 ```
     const HomeVariants = {
@@ -164,3 +164,34 @@ After 1 sec from the setTimeout, the h1 will animate out of the screen verticall
 ```
 
 In addition, make sure to append **exitBeforeEnter** on the \<AnimatePresence> tag so that each component animation may complete before the next one is loaded.
+
+### useCycle Hook from Framer
+
+This is a useful hook to use to 'cycle' two or more different animations. You can assign multiple variant properties as animations onto your useCycle hook and use it like so:
+
+```
+const myVariant = {
+    animationOne: {
+        //something here...
+    }
+    animationTwo: {
+        //something here...
+    }
+}
+
+const [animation, cycleAnimation] = useCycle('myVariant1', 'myVariant2')
+
+<motion.div initial={myVariant} animate={animation}></motion.div>
+<button onClick={() => cycleAnimation()}>Cycle Animation</button>
+```
+
+As you can see, I can replace the animate value with the useCycle hook to tap into the animations that are available within myVariant. This is useful to alternate different animations.
+It also doesn't need to be changed imperatively. You can alternate the different animations on a timely basis.
+
+### Drag Elements
+
+Just add the word drag onto your tag to make it draggable. Further control dragging by setting a dragConstraints property onto the same tag like so:
+
+```
+<motion.img src="logo" drag dragConstraints={{top: 0, bottom: 0, left: 0, right: 0}} />
+```

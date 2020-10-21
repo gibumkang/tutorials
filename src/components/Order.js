@@ -14,7 +14,7 @@ const containerVariants = {
             mass: 0.4,
             damping: 8,
             when: 'beforeChildren',
-            staggerChildren: 5,
+            staggerChildren: 0.5,
         },
     },
 };
@@ -38,6 +38,7 @@ const Order = ({ pizza, setShowModal }) => {
         setTimeout(() => {
             setShowModal(true);
         }, 2500);
+        //this will only run when setShowModal updates
     }, [setShowModal]);
 
     return (
