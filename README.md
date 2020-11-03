@@ -37,3 +37,26 @@ return (
 }
 export default App
 ```
+
+There is some additional configuration available for the router module.
+
+### Make all subdirectory destinations default to the subdirectory
+
+For example, force all pages within /app to default to app.js. This will require configuration within the gatsby-node.js file.
+
+```
+// Implement the Gatsby API “onCreatePage”. This is
+// called after every page is created.
+exports.onCreatePage = async ({ page, actions }) => {
+  const { createPage } = actions
+  // page.matchPath is a special key that's used for matching pages
+  // only on the client.
+  if (page.path.match(/^\/app/)) {
+    page.matchPath = "/app/*"
+    // Update the page.
+    createPage(page)
+  }
+}
+```
+
+### Use React's contextAPI to protect routes in Gatsby

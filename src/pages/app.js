@@ -6,6 +6,7 @@ import Dashboard from '../components/app/Dashboard';
 import Account from '../components/app/Account';
 
 const App = ({ location }) => {
+    //meant to redirect user back to original page before redirection to login page
     const redirect = location.pathname.split('/').pop();
 
     return (
