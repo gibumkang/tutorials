@@ -9,6 +9,7 @@ exports.components = {
   "component---src-pages-404-js": hot(preferDefault(require("/Users/gkang/Sites/projects/tutorials/src/pages/404.js"))),
   "component---src-pages-app-js": hot(preferDefault(require("/Users/gkang/Sites/projects/tutorials/src/pages/app.js"))),
   "component---src-pages-index-js": hot(preferDefault(require("/Users/gkang/Sites/projects/tutorials/src/pages/index.js"))),
+  "component---src-pages-login-js": hot(preferDefault(require("/Users/gkang/Sites/projects/tutorials/src/pages/login.js"))),
   "component---src-pages-page-2-js": hot(preferDefault(require("/Users/gkang/Sites/projects/tutorials/src/pages/page-2.js"))),
   "component---src-pages-using-typescript-tsx": hot(preferDefault(require("/Users/gkang/Sites/projects/tutorials/src/pages/using-typescript.tsx")))
 }

@@ -218,3 +218,29 @@ return (
 ```
 
 You can see that it wouldn't make much sense to apply <code>useReducer</code> unless there are more than 3 functions taking place. It's just another flavor of doing the same thing in <code>useState</code> but more efficient and cleaner in some instances.
+
+### Exporting our wrapRootElement in gatsby files
+
+This is unique to gatsby. You must add the following line within <code>gatsby-browser.js</code> and <code>gatsby-ssr.js</code>:
+
+```JSX
+//gatsby-browser and gatsby-ssr.js
+export { wrapRootElement } from './src/hooks/useAuth';
+```
+
+### Protecting pages in app.js
+
+Now that we have our framework for protecting pages, actually protecting pages is very simple and straight-forward:
+
+```JSX
+//app.js
+  const { state, isAuthenticated } = useAuth()
+  const redirect = location.pathname.split('/').pop()
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/login', { state: { redirect }});
+    }
+  }, [isAuthenticated, redirect]);
+```
+
+<code>useAuth</code> is called and stored into the const [state, isAuthenticated]. In the <code>useEffect</code> declaration, we check to see if the use is authenticated. If not, then they are automatically redirected to <code>/login</code> by the <code>navigate</code> method that is unique to gatsby.
