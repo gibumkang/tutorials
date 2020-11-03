@@ -169,7 +169,7 @@ The <code>try</code> block carries the payload, which carries the credentials st
 
 Finally, in the same <code>try</code> block, we are calling the <code>dispatcher</code> and passing in the <code>'LOGIN'</code> case which was declared above in our switch statement, which is really our reducer, along with the <code>payload</code> which stores the credentials.
 
-The <code>catch</code> is self-explanatory. Beneath that is the logout functionality, which then dispatches the <code>'LOGOUT'<code> case within our reducer. We end this codeblock by returning the state, isAuthenticated, login, and logout.
+The <code>catch</code> is self-explanatory. Beneath that is the logout functionality, which then dispatches the <code>'LOGOUT'</code> case within our reducer. We end this codeblock by returning the state, isAuthenticated, login, and logout.
 
 #### Overview of this code, useReducer specifically
 
