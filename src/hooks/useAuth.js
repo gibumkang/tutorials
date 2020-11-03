@@ -23,11 +23,11 @@ const reducer = (state, action) => {
 //setting a createContext within AuthContext
 const AuthContext = createContext();
 
-const AuthProvider = ({ children }) => {
+const AuthProvider = ({ children }) => (
     //using the AuthContext which is really useContext
     //also utilizing useReducer that passes our reducer and default state
-    return <AuthContext.Provider value={useReducer(reducer, DEFAULT_STATE)}>{children}</AuthContext.Provider>;
-};
+    <AuthContext.Provider value={useReducer(reducer, DEFAULT_STATE)}>{children}</AuthContext.Provider>
+);
 
 //our wrapping function that wraps element within AuthProvider
 //this wrapper is unique to Gatsby
@@ -35,18 +35,16 @@ export const wrapRootElement = ({ element }) => <AuthProvider>{element}</AuthPro
 
 //this is a custom useAuth hook
 const useAuth = () => {
-    //you want to apply useContext to access createContext components, in this case AuthContext
     const [state, dispatcher] = useContext(AuthContext);
-    //checks if user is logged in and exists in state
-    const isAuthenticated = state.loggedIn && Object.keys(state.user).length;
-    const login = async (credentials) =>
+    const isAuthenticated = state.loggedIn;
+
+    const login = (credentials) =>
         new Promise(async (resolve, reject) => {
             try {
                 const { data: payload } = await axios.post(`${apiURL}/auth/local`, credentials);
                 dispatcher({ type: 'LOGIN', payload });
                 resolve(payload);
             } catch (e) {
-                console.log(e);
                 reject(e);
             }
         });
