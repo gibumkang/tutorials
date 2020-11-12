@@ -6,7 +6,7 @@ This is based off of the tutorial off Udemy.
 
 This is done on the Header.js file for this project. Adding routes are pretty self-explanatory and done in this fashion:
 
-```react
+```reactjs
 import {NavLink, Switch} from 'react-router-dom';
 //...
 
@@ -18,7 +18,7 @@ import {NavLink, Switch} from 'react-router-dom';
 
 Whenever you have a situation where you need to update state based on the opposite state, then use the prev pattern, which becomes available only in setters.
 
-```react
+```reactjs
 //not recommended
 <button onClick={() => setLogin(!login)}>
 
