@@ -25,3 +25,7 @@ Whenever you have a situation where you need to update state based on the opposi
 //prev pattern, recommended
 <button onClick={() => setLogin(prevLogin => !prevLogin)}>
 ```
+
+#### useFormValidation is a custom hook
+
+Refer to the useFormValidation.js file to see how we are handling entries for multiple input fields in one handler and one state, as opposed to several different states.
