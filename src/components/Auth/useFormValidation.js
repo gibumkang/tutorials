@@ -37,7 +37,6 @@ function useFormValidation(initialState, validate, authenticate) {
         e.preventDefault();
         //we have access to validate, which is from validateLogin
         //because it was passed from Login.js along with INITIAL_STATE
-        validate(values);
         const validationErrors = validate(values);
         setErrors(validationErrors);
         setSubmitting(true);
