@@ -1,6 +1,6 @@
 ## How to hook React with Firebase
 
-This is based off of the tutorial on Udemy.
+This is based off of the tutorial on Udemy. Find the final app [here](https://react-firebase-udemy-tutorial.web.app/new/1).
 
 #### Build out NavLinks from 'react-router-dom' for routing
 
