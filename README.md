@@ -38,3 +38,5 @@ Refer to the index.js file within the firebase folder to see a better alternativ
 ### The customHook pattern in this video is THE BEST!
 
 Refer to Login.js or CreateLink.js to implement this amazing pattern that is ideal for forms. In this example, we have it execute error handling, onChange, onBlur, and so much more. Lastly, it will initialize whatever action you direct it to so forms can serve different purposes.
+
+Stopped at 21
