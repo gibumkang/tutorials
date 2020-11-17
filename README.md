@@ -39,4 +39,37 @@ Refer to the index.js file within the firebase folder to see a better alternativ
 
 Refer to Login.js or CreateLink.js to implement this amazing pattern that is ideal for forms. In this example, we have it execute error handling, onChange, onBlur, and so much more. Lastly, it will initialize whatever action you direct it to so forms can serve different purposes.
 
-Stopped at 21
+### withRouter from react-router-dom and history
+
+Wrapping the component towards the bottom on the line with export default
+
+### Updating firebase
+
+```react
+//this is the pattern to utilize to update anything on firebase
+voteRef.get().then((doc) => {
+    if (doc.exists) {
+        const previousVotes = doc.data().votes;
+        const vote = {
+            votedBy: {
+                id: user.uid,
+                name: user.displayName,
+            },
+        };
+        const updatedVotes = [...previousVotes, vote];
+        voteRef.update({ votes: updatedVotes });
+    }
+});
+```
+
+### Sort method is utilized to sort the upvotes for top votes
+
+```reactjs
+const topLinks = links.slice().sort((l1, l2) => l2.votes.length - l1.votes.length);
+```
+
+[This](https://www.w3schools.com/js/js_array_sort.asp) is a good reference as to how the sort() method operates. In a nutshell, sort() is great for organizing strings in alphabetical order. It can be used to sort numbers as well, but requires the pattern above.
+
+### SearchLinks
+
+This component an excellent way to filter based on several different arguments such as name, description, and url.
