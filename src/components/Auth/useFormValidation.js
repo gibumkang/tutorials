@@ -9,7 +9,6 @@ function useFormValidation(initialState, validate, authenticate) {
         if (isSubmitting) {
             const noErrors = Object.keys(errors).length === 0;
             if (noErrors) {
-                console.log('authed');
                 authenticate();
                 setSubmitting(false);
             } else {
