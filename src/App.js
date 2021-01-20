@@ -1,55 +1,99 @@
-import React, { useState } from "react";
+import React, {useRef, useEffect} from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
-import Header from "./components/Header";
-import Home from "./components/Home";
-import Base from "./components/Base";
-import Toppings from "./components/Toppings";
-import Order from "./components/Order";
-import { AnimatePresence } from "framer-motion";
-import Modal from "./components/Modal";
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/splide/dist/css/themes/splide-default.min.css';
+import { createSlides } from './utils/slides';
 
 function App() {
-    const location = useLocation();
-    const [showModal, setShowModal] = useState(false);
-    const [pizza, setPizza] = useState({ base: "", toppings: [] });
+    const primaryRef = useRef();
+    const secondaryRef = useRef();
 
-    const addBase = (base) => {
-        setPizza({ ...pizza, base });
+    useEffect(() => {
+        primaryRef.current.sync(secondaryRef.current.splide);
+    }, [])
+
+    function renderSlides() {
+		return createSlides().map( slide => (
+			<SplideSlide key={ slide.src }>
+				<img src={ slide.src } alt={ slide.alt } />
+			</SplideSlide>
+		))
+	};
+
+    const primaryOptions = {
+        type      : 'loop',
+        perPage   : 1,
+        perMove   : 1,
+        gap       : '1rem',
+        pagination: false,
     };
 
-    const addTopping = (topping) => {
-        let newToppings;
-        if (!pizza.toppings.includes(topping)) {
-            newToppings = [...pizza.toppings, topping];
-        } else {
-            newToppings = pizza.toppings.filter((item) => item !== topping);
-        }
-        setPizza({ ...pizza, toppings: newToppings });
+    const secondaryOptions = {
+        type        : 'slide',
+        rewind      : true,
+        gap         : '1rem',
+        pagination  : false,
+        fixedWidth  : 110,
+        fixedHeight : 70,
+        cover       : true,
+        focus       : 'center',
+        isNavigation: true,
+        updateOnMove: true,
     };
 
     return (
         <>
-            <Header />
-            <Modal showModal={showModal} setShowModal={setShowModal} />
-            <AnimatePresence
-                exitBeforeEnter
-                onExitComplete={() => setShowModal(false)}
+            <div className="wrapper">
+				<h2>Thumbnail Slider</h2>
+
+				<Splide options={ primaryOptions } ref={ primaryRef }>
+					{ renderSlides() }
+				</Splide>
+
+				<Splide options={ secondaryOptions } ref={ secondaryRef }>
+					{ renderSlides() }
+				</Splide>
+			</div>
+            {/* Basic Slider
+            <Splide
+                options={{
+                    rewind: true,
+                    perPage: 2,
+                    perMove: 1,
+                    gap: '1rem',
+                }}
+                onMoved={(splide, newIndex) => {console.log('moved', newIndex)}}
             >
-                <Switch location={location} key={location.key}>
-                    <Route path="/base">
-                        <Base addBase={addBase} pizza={pizza} />
-                    </Route>
-                    <Route path="/toppings">
-                        <Toppings addTopping={addTopping} pizza={pizza} />
-                    </Route>
-                    <Route path="/order">
-                        <Order pizza={pizza} setShowModal={setShowModal} />
-                    </Route>
-                    <Route path="/">
-                        <Home />
-                    </Route>
-                </Switch>
-            </AnimatePresence>
+                { createSlides().map(slide => (
+                    <SplideSlide key={slide.src}>
+                        <img src={slide.src} alt={slide.alt} />
+                    </SplideSlide>
+                ))}
+            </Splide>
+            <br/><br/>
+            Autoplay Slider
+            <Splide
+                options={{
+                    type: 'loop',
+                    autoplay: true,
+                    pauseOnHover: true,
+                    resetProgress: false,
+                    arrows: 'slider',
+                    perPage: 1,
+                    perMove: 1,
+                    gap: '1rem',
+                }}
+                hasSliderWrapper
+                hasAutoplayControls
+                hasAutoplayProgress
+                onMoved={(splide, newIndex) => {console.log('moved', newIndex)}}
+            >
+                { createSlides().map(slide => (
+                    <SplideSlide key={slide.src}>
+                        <img src={slide.src} alt={slide.alt} />
+                    </SplideSlide>
+                ))}
+            </Splide> */}
         </>
     );
 }
